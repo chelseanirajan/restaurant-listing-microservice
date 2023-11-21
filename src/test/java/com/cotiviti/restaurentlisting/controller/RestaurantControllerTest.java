@@ -16,7 +16,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-public class RestaurantControllerTest {
+ class RestaurantControllerTest {
 
     @InjectMocks
     RestaurantController restaurantController;
@@ -25,12 +25,12 @@ public class RestaurantControllerTest {
     RestaurantServiceImpl restaurantService;
 
     @BeforeEach
-    public void setUp(){
+     void setUp(){
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    public void testFetchAllRestaurant(){
+     void testFetchAllRestaurant(){
 
         List<RestaurantDTO>  restaurantDTOS = Arrays
                 .asList(
@@ -47,7 +47,7 @@ public class RestaurantControllerTest {
 
     }
     @Test
-    public void addRestaurant(){
+     void addRestaurant(){
         RestaurantDTO restaurantDTO = new RestaurantDTO(1, "Restaurant 1", "This is test", "Roanoke 1","test1");
         when(restaurantService.addRestaurant(restaurantDTO)).thenReturn(restaurantDTO);
 
@@ -61,7 +61,7 @@ public class RestaurantControllerTest {
     }
 
     @Test
-    public void testGetRestaurantById(){
+     void testGetRestaurantById(){
         int id = 1;
         RestaurantDTO restaurantDTO = new RestaurantDTO(1, "Restaurant 1", "This is test", "Roanoke 1","test1");
 

@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 
-public class RestaurantServiceImplTest {
+ class RestaurantServiceImplTest {
 
     @InjectMocks
     RestaurantServiceImpl restaurantService;
@@ -29,12 +29,12 @@ public class RestaurantServiceImplTest {
     RestaurantRepository restaurantRepository;
 
     @BeforeEach
-    public void setUp() {
+     void setUp() {
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    public void testFetchAllRestaurant() {
+     void testFetchAllRestaurant() {
         List<Restaurant> restaurant = Arrays.asList(
                         new Restaurant(1, "Restaurant 1", "This is test", "Roanoke 1", "test1"),
                         new Restaurant(2, "Restaurant 2", "This is test2", "Roanoke 2", "test2"));
@@ -49,7 +49,7 @@ public class RestaurantServiceImplTest {
     }
 
     @Test
-    public void testAddRestaurant(){
+     void testAddRestaurant(){
         RestaurantDTO restaurantdto = new RestaurantDTO(1, "Restaurant 1", "This is test", "Roanoke 1", "test1");
 
         Restaurant restaurant = RestaurantMapper.INSTANCE.getRestaurantFromRestaurantDTO(restaurantdto);
@@ -62,7 +62,7 @@ public class RestaurantServiceImplTest {
 
     }
     @Test
-    public void testGetRestaurantById(){
+     void testGetRestaurantById(){
         int id = 1;
         Restaurant restaurant = new Restaurant(1, "Restaurant 1", "This is test", "Roanoke 1", "test1");
 
@@ -75,7 +75,7 @@ public class RestaurantServiceImplTest {
         verify(restaurantRepository, times(1)).findById(id);
     }
     @Test
-    public void testGetRestaurantByIdNotExisting(){
+     void testGetRestaurantByIdNotExisting(){
         int id = 1;
         when(restaurantRepository.findById(id)).thenReturn(Optional.empty());
         ResponseEntity<RestaurantDTO> response = restaurantService.getRestaurantById(id);
