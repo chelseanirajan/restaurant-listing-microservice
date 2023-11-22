@@ -13,5 +13,3 @@ spring:
       ddl-auto: update
     show-sql: true
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-
-test: squ_a39b05fb3fadf20ce2713f7f0c88fa3ac8d17487
