@@ -38,15 +38,16 @@ pipeline{
                                             script: "echo '${response}' | jq -r '.component.measures[0].value'",
                                             returnStdout: true
                                         ).trim()
-                                        if (coverageString.isFloat()) {
-                                            coverage = coverageString.toDouble()
+                    def cov = 0.0
+                                        if (coverage.isFloat()) {
+                                            cov = coverage.toDouble()
                                         } else {
-                                            println "Coverage value is not a valid number: $coverageString"
+                                            println "Coverage value is not a valid number: $coverage"
                                             // Handle the case when coverageString is not a valid number
                                         }
-                    echo "Coverage: ${coverage}"
+                    echo "Coverage: ${cov}"
 
-                    if (coverage < coverageThreshold) {
+                    if (cov < coverageThreshold) {
                         error "Coverage is below the threshold of ${coverageThreshold}%. Aborting the pipeline."
                     }
                 }
